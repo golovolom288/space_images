@@ -17,7 +17,6 @@ def get_apod_photos(nasa_token, count):
     apod_photos = nasa_apod_response.json()
     for count, apod_photo in enumerate(apod_photos):
         apod_photo_url = apod_photo["url"]
-        name_photo = os.path.basename(apod_photo_url)
         file_extension = os.path.splitext(urlparse(apod_photo_url).path)[1]
         save_img(apod_photo_url, f"images/apod_photo_{count + 1}{file_extension}")
 
