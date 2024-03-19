@@ -25,8 +25,8 @@ def get_epic_photos(count_photos, token):
 if __name__ == "__main__":
     load_dotenv()
     nasa_token = os.environ["NASA_TOKEN"]
-    parser = argparse.ArgumentParser()
-    parser.add_argument("count_photos_epic", type=int)
+    parser = argparse.ArgumentParser(description="Принимает количество нужных фотографий")
+    parser.add_argument("--count_photos_epic", help="Число апод фотографий ", type=int)
     args = parser.parse_args()
     count_photos_epic = args.count_photos_epic
     get_epic_photos(count_photos_epic, nasa_token)

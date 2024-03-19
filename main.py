@@ -13,9 +13,10 @@ if __name__ == "__main__":
     nasa_token = os.environ['NASA_TOKEN']
     hours = int(os.environ["TG_TIME"])
     tg_bot_token = os.environ["TG_BOT_TOKEN"]
-    parser = argparse.ArgumentParser()
-    parser.add_argument("count_photo_apod", type=int)
-    parser.add_argument("count_photo_epic", type=int)
+    chat_id = os.environ["TG_GROUP_ID"]
+    parser = argparse.ArgumentParser(description="Принимает количество нужных фотографий")
+    parser.add_argument("--count_photo_apod", help="Число апод фотографий ", type=int)
+    parser.add_argument("--count_photo_epic", help="Число эпик фотографий ", type=int)
     args = parser.parse_args()
     count_photos_apod = args.count_photo_apod
     count_photos_epic = args.count_photo_epic
@@ -25,6 +26,6 @@ if __name__ == "__main__":
     fetch_spacex_last_launches()
     get_epic_photos(count_photos_epic, nasa_token)
     get_apod_photos(count_photos_apod, nasa_token)
-    send_photos_tg_bot(hours, tg_bot_token, directory="images/")
+    send_photos_tg_bot(hours, tg_bot_token, chat_id, directory="images/")
 
 
