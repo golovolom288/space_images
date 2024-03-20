@@ -15,14 +15,11 @@ if __name__ == "__main__":
     tg_bot_token = os.environ["TG_BOT_TOKEN"]
     chat_id = os.environ["TG_GROUP_ID"]
     parser = argparse.ArgumentParser(description="Принимает количество нужных фотографий")
-    parser.add_argument("--count_photo_apod", help="Число апод фотографий ", type=int)
-    parser.add_argument("--count_photo_epic", help="Число эпик фотографий ", type=int)
+    parser.add_argument("--count_photo_apod", "-cpa", help="Число апод фотографий ", type=int)
+    parser.add_argument("--count_photo_epic", "-cpe", help="Число эпик фотографий ", type=int)
     args = parser.parse_args()
     count_photos_apod = args.count_photo_apod
     count_photos_epic = args.count_photo_epic
-    filename = 'images/hubble.jpeg'
-    url_hubble = "https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg"
-    save_img(url_hubble, filename)
     fetch_spacex_last_launches()
     get_epic_photos(count_photos_epic, nasa_token)
     get_apod_photos(count_photos_apod, nasa_token)
